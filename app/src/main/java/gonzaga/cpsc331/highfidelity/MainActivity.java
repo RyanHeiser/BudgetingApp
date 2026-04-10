@@ -1,8 +1,6 @@
 package gonzaga.cpsc331.highfidelity;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.view.View;
 
 import androidx.activity.ComponentActivity;
 import androidx.activity.EdgeToEdge;
@@ -13,7 +11,7 @@ public class MainActivity extends ComponentActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.main);
+        setContentView(R.layout.login);
     }
 
 }
