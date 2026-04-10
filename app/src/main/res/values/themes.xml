@@ -2,4 +2,18 @@
 <resources>
 
     <style name="Theme.HighFidelity" parent="android:Theme.Material.Light.NoActionBar" />
+
+    <style name="Theme.AppCompat.Light" parent="android:Theme.Material.Light.NoActionBar" />
+
+    <style name="Theme.HighFidelity.Main" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:colorPrimary">#00FF00</item>
+        <item name="android:colorPrimaryDark">#00FF00</item>
+        <item name="android:colorAccent">#FFFFFF</item>
+    </style>
+
+    <style name="NavMenuItemTextAppearance" parent="TextAppearance.AppCompat.Body1">
+        <item name="android:textSize">18sp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textColor">@color/green</item>
+    </style>
 </resources>
