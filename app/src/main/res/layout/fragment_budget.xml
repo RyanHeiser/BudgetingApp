@@ -16,7 +16,7 @@
         android:paddingTop="16dp"
         android:paddingBottom="12dp"
         android:gravity="center_vertical"
-        app:layout_anchorGravity="top">
+        app:layout_anchorGravity="top" >
 
         <TextView
             android:id="@+id/tvMonthTitle"
