@@ -21,16 +21,19 @@
             android:text="Goal Name"
             android:textSize="22sp"
             android:textColor="@color/black"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:layout_marginLeft="10dp"/>
 
-        <Button
+        <ImageButton
             android:id="@+id/btnDeleteGoal"
             android:layout_width="36dp"
             android:layout_height="36dp"
             android:src="@android:drawable/ic_delete"
             android:background="@drawable/bg_red_circle"
             android:tint="@color/white"
-            android:contentDescription="Delete goal" />
+            android:contentDescription="Delete goal"
+            android:layout_marginRight="10dp"/>
+
 
     </LinearLayout>
 
