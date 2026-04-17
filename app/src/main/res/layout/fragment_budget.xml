@@ -28,14 +28,6 @@
             android:textSize="64sp"
             android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/btnSummary"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Summary"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:textColor="@color/black" />
-
     </LinearLayout>
 
     <!-- DIVIDER -->
