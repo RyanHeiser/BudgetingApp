@@ -66,10 +66,8 @@ public class BudgetCategoryAdapter extends RecyclerView.Adapter<BudgetCategoryAd
 
         holder.name.setText(category.getName());
 
-        if (holder.rowAdapter == null) {
-            holder.rowAdapter = new BudgetRowAdapter(category.getRows());
-            holder.rowsRecyclerView.setAdapter(holder.rowAdapter);
-        }
+        holder.rowAdapter = new BudgetRowAdapter(category.getRows());
+        holder.rowsRecyclerView.setAdapter(holder.rowAdapter);
 
         holder.addRowButton.setOnClickListener(v -> {
             new CreateRowDialog(position)
@@ -88,12 +86,8 @@ public class BudgetCategoryAdapter extends RecyclerView.Adapter<BudgetCategoryAd
     }
 
     public void addRowToCategory(RecyclerView recyclerView, int categoryPosition, BudgetRow row) {
-        RecyclerView.ViewHolder vh = recyclerView.findViewHolderForAdapterPosition(categoryPosition);
-        if (vh instanceof ViewHolder) {
-            ViewHolder holder = (ViewHolder) vh;
-            if (holder.rowAdapter != null) {
-                holder.rowAdapter.addRow(row);
-            }
-        }
+        BudgetCategory category = categories.get(categoryPosition);
+        category.addRow(row);
+        notifyItemChanged(categoryPosition);
     }
 }

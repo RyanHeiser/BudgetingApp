@@ -13,7 +13,9 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.List;
 
 import gonzaga.cpsc331.highfidelity.R;
 import gonzaga.cpsc331.highfidelity.adapter.BudgetCategoryAdapter;
@@ -49,6 +51,25 @@ public class BudgetFragment extends Fragment
         });
 
         return view;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        adapter.addCategory(new BudgetCategory("Income", new ArrayList<>(List.of(
+                new BudgetRow("Paycheck 1", new BigDecimal("2755.00")),
+                new BudgetRow("Paycheck 2", new BigDecimal("2980.00"))
+        ))));
+
+        adapter.addCategory(new BudgetCategory("Savings", new ArrayList<>(List.of(
+                new BudgetRow("Savings Fund", new BigDecimal("500.00"))
+        ))));
+
+        adapter.addCategory(new BudgetCategory("Housing", new ArrayList<>(List.of(
+                new BudgetRow("Rent", new BigDecimal("875.00")),
+                new BudgetRow("Utilities", new BigDecimal("80.00"))
+        ))));
     }
 
     @Override
