@@ -15,7 +15,7 @@ import gonzaga.cpsc331.highfidelity.model.BudgetCategory;
 
 public class BudgetCategoryAdapter extends RecyclerView.Adapter<BudgetCategoryAdapter.ViewHolder> {
 
-    private List<BudgetCategory> categories;
+    private final List<BudgetCategory> categories;
 
     public BudgetCategoryAdapter(List<BudgetCategory> categories) {
         this.categories = categories;

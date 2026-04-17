@@ -52,7 +52,7 @@ public class ItemBudgetRowFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_budget_row, container, false);
+        View view = inflater.inflate(R.layout.budget_row, container, false);
 
         TextView label = view.findViewById(R.id.rowLabelText);
         label.setText(name);
