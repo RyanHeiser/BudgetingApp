@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/item_budget_row"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:paddingVertical="6dp">
+
+    <!-- ROW LABEL (e.g. "Paycheck 1", "Rent") -->
+    <TextView
+        android:id="@+id/rowName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.5"
+        android:cursorVisible="true"
+        android:text="New Row"
+        android:textSize="28sp" />
+
+    <!-- AMOUNT FIELD -->
+    <TextView
+        android:id="@+id/dollarSign"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        android:layout_weight="0"
+        android:text="$"
+        android:textSize="28sp" />
+
+    <EditText
+        android:id="@+id/etRowAmount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:background="@null"
+        android:cursorVisible="true"
+        android:focusableInTouchMode="true"
+        android:gravity="end"
+        android:hint="0.00"
+        android:imeOptions="actionDone"
+        android:inputType="numberDecimal"
+        android:maxLength="10"
+        android:textColor="@color/black"
+        android:textCursorDrawable="@color/black"
+        android:textIsSelectable="true"
+        android:textSize="28sp" />
+
+    <!-- DELETE BUTTON -->
+    <ImageButton
+        android:id="@+id/btnDeleteRow"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="10dp"
+        android:background="@drawable/bg_red_circle"
+        android:contentDescription="Delete goal"
+        android:src="@android:drawable/ic_delete"
+        app:tint="@color/white" />
+
+</LinearLayout>

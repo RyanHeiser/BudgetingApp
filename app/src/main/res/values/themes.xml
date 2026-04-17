@@ -16,4 +16,5 @@
         <item name="android:fontFamily">sans-serif-medium</item>
         <item name="android:textColor">@color/green</item>
     </style>
+
 </resources>

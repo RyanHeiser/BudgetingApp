@@ -25,16 +25,8 @@
             android:layout_weight="1"
             android:text="April"
             android:textColor="@color/black"
-            android:textSize="36sp"
+            android:textSize="64sp"
             android:textStyle="bold" />
-
-        <Button
-            android:id="@+id/btnSummary"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Summary"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:textColor="@color/black" />
 
     </LinearLayout>
 
@@ -43,15 +35,15 @@
         android:id="@+id/divider"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#CCCCCC"
-        android:layout_marginTop="72dp" />
+        android:layout_marginTop="108dp"
+        android:background="#CCCCCC" />
 
     <!-- SCROLLABLE CATEGORY LIST -->
     <ScrollView
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="120dp"
         android:layout_marginBottom="64dp"
         android:fillViewport="true">
 
@@ -61,7 +53,14 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:paddingHorizontal="16dp"
-            android:paddingBottom="16dp" />
+            android:paddingBottom="16dp">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvCategories"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
 
     </ScrollView>
 
@@ -75,11 +74,12 @@
 
         <Button
             android:id="@+id/btnAddCategory"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Add Category"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textSize="24sp" />
 
     </LinearLayout>
 
