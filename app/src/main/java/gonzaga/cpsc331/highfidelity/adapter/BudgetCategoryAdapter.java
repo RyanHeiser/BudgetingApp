@@ -88,11 +88,6 @@ public class BudgetCategoryAdapter extends RecyclerView.Adapter<BudgetCategoryAd
     }
 
     public void addRowToCategory(RecyclerView recyclerView, int categoryPosition, BudgetRow row) {
-//        BudgetCategory category = categories.get(categoryPosition);
-//        category.addRow(row);
-//
-//        notifyItemChanged(categoryPosition);
-
         RecyclerView.ViewHolder vh = recyclerView.findViewHolderForAdapterPosition(categoryPosition);
         if (vh instanceof ViewHolder) {
             ViewHolder holder = (ViewHolder) vh;
