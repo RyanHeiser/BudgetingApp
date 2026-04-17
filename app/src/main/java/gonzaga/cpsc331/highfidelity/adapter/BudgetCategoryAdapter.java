@@ -4,6 +4,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -38,6 +39,7 @@ public class BudgetCategoryAdapter extends RecyclerView.Adapter<BudgetCategoryAd
         RecyclerView rowsRecyclerView;
         BudgetRowAdapter rowAdapter;
         Button addRowButton;
+        ImageButton deleteButton;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -49,6 +51,7 @@ public class BudgetCategoryAdapter extends RecyclerView.Adapter<BudgetCategoryAd
             );
             rowsRecyclerView.setNestedScrollingEnabled(false);
             addRowButton = itemView.findViewById(R.id.addRowButton);
+            deleteButton = itemView.findViewById(R.id.btnDeleteCategory);
         }
     }
 
@@ -73,6 +76,11 @@ public class BudgetCategoryAdapter extends RecyclerView.Adapter<BudgetCategoryAd
             new CreateRowDialog(position)
                     .show(parent.getChildFragmentManager(), "createRow");
         });
+
+        holder.deleteButton.setOnClickListener(v -> {
+            BudgetCategoryAdapter.this.deleteCategory(holder.getAbsoluteAdapterPosition());
+        });
+
     }
 
     @Override
@@ -83,6 +91,11 @@ public class BudgetCategoryAdapter extends RecyclerView.Adapter<BudgetCategoryAd
     public void addCategory(BudgetCategory category) {
         categories.add(category);
         notifyItemInserted(categories.size() - 1);
+    }
+
+    public void deleteCategory(int position) {
+        categories.remove(position);
+        notifyItemRemoved(position);
     }
 
     public void addRowToCategory(RecyclerView recyclerView, int categoryPosition, BudgetRow row) {
