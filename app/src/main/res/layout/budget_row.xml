@@ -11,24 +11,12 @@
 
     <!-- ROW LABEL (e.g. "Paycheck 1", "Rent") -->
     <TextView
-        android:id="@+id/rowLabelText"
+        android:id="@+id/rowName"
         android:layout_width="wrap_content"
         android:layout_height="53dp"
-        android:layout_weight="2"
+        android:layout_weight="1.5"
         android:text="TextView"
-        android:textSize="16sp" />
-
-    <EditText
-        android:id="@+id/etRowLabel"
-        android:layout_width="0dp"
-        android:layout_height="53dp"
-        android:layout_weight="2"
-        android:background="@null"
-        android:hint="Label"
-        android:imeOptions="actionNext"
-        android:inputType="text"
-        android:textColor="@color/black"
-        android:textSize="16sp" />
+        android:textSize="28sp" />
 
     <!-- AMOUNT FIELD -->
     <EditText
@@ -42,7 +30,7 @@
         android:imeOptions="actionDone"
         android:inputType="numberDecimal"
         android:textColor="@color/black"
-        android:textSize="16sp" />
+        android:textSize="24sp" />
 
     <!-- DELETE BUTTON -->
     <ImageButton

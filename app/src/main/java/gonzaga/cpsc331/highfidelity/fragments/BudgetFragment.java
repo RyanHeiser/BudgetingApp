@@ -18,12 +18,15 @@ import java.util.ArrayList;
 import gonzaga.cpsc331.highfidelity.R;
 import gonzaga.cpsc331.highfidelity.adapter.BudgetCategoryAdapter;
 import gonzaga.cpsc331.highfidelity.dialogs.CreateCategoryDialog;
+import gonzaga.cpsc331.highfidelity.dialogs.CreateRowDialog;
 import gonzaga.cpsc331.highfidelity.model.BudgetCategory;
+import gonzaga.cpsc331.highfidelity.model.BudgetRow;
 
 public class BudgetFragment extends Fragment
-        implements CreateCategoryDialog.CreateCategoryDialogListener {
+        implements CreateCategoryDialog.CreateCategoryDialogListener, CreateRowDialog.CreateRowDialogListener {
 
     private BudgetCategoryAdapter adapter;
+    private RecyclerView recyclerView;
 
     @Nullable
     @Override
@@ -33,9 +36,9 @@ public class BudgetFragment extends Fragment
 
         View view = inflater.inflate(R.layout.fragment_budget, container, false);
 
-        RecyclerView recyclerView = view.findViewById(R.id.rvCategories);
+        recyclerView = view.findViewById(R.id.rvCategories);
 
-        adapter = new BudgetCategoryAdapter(new ArrayList<>());
+        adapter = new BudgetCategoryAdapter(new ArrayList<>(), this);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
 
@@ -49,12 +52,23 @@ public class BudgetFragment extends Fragment
     }
 
     @Override
-    public void onDialogPositiveClick(DialogFragment dialog, String name) {
-        adapter.addCategory(new BudgetCategory(name));
+    public void onCreateCategoryDialogPositiveClick(DialogFragment dialog, String name) {
+        adapter.addCategory(new BudgetCategory(name, new ArrayList<>()));
     }
 
     @Override
-    public void onDialogNegativeClick(DialogFragment dialog) {
+    public void onCreateCategoryDialogNegativeClick(DialogFragment dialog) {
+        // no-op
+    }
+
+    @Override
+    public void onCreateRowDialogPositiveClick(DialogFragment dialog, String name) {
+        int position = ((CreateRowDialog)dialog).getCategoryPosition();
+        adapter.addRowToCategory(recyclerView, position, new BudgetRow(name));
+    }
+
+    @Override
+    public void onCreateRowDialogNegativeClick(DialogFragment dialog) {
         // no-op
     }
 }

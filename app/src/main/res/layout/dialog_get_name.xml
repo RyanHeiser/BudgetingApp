@@ -5,7 +5,7 @@
 
     <EditText
         android:id="@+id/newCategoryNameField"
-        android:layout_width="150dp"
+        android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_marginLeft="4dp"
         android:layout_marginTop="16dp"
@@ -13,5 +13,5 @@
         android:layout_marginBottom="4dp"
         android:hint="Category Name"
         android:inputType="text"
-        android:textSize="20sp" />
+        android:textSize="24sp" />
 </LinearLayout>

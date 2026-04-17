@@ -17,15 +17,24 @@ import androidx.fragment.app.Fragment;
 
 import gonzaga.cpsc331.highfidelity.R;
 
-public class CreateCategoryDialog extends DialogFragment {
+public class CreateRowDialog extends DialogFragment {
 
-    public interface CreateCategoryDialogListener {
-        public void onCreateCategoryDialogPositiveClick(DialogFragment dialog, String name);
-        public void onCreateCategoryDialogNegativeClick(DialogFragment dialog);
+    public interface CreateRowDialogListener {
+        public void onCreateRowDialogPositiveClick(DialogFragment dialog, String name);
+        public void onCreateRowDialogNegativeClick(DialogFragment dialog);
     }
 
-    CreateCategoryDialogListener listener;
+    CreateRowDialogListener listener;
     EditText editText;
+    int categoryPosition;
+
+    public CreateRowDialog(int categoryPosition) {
+        this.categoryPosition = categoryPosition;
+    }
+
+    public int getCategoryPosition() {
+        return categoryPosition;
+    }
 
     // Override the Fragment.onAttach() method to instantiate the
     // NoticeDialogListener.
@@ -39,10 +48,10 @@ public class CreateCategoryDialog extends DialogFragment {
         }
 
         // Verify that the host fragment implements the callback interface.
-        if (parent instanceof CreateCategoryDialogListener) {
-            listener = (CreateCategoryDialogListener) parent;
+        if (parent instanceof CreateRowDialogListener) {
+            listener = (CreateRowDialogListener) parent;
         } else {
-            throw new ClassCastException("Parent fragment must implement CreateCategoryDialogListener");
+            throw new ClassCastException("Parent fragment must implement CreateRowDialogListener");
         }
     }
 
@@ -57,19 +66,19 @@ public class CreateCategoryDialog extends DialogFragment {
         // Pass null as the parent view because it's going in the dialog layout.
         View view = inflater.inflate(R.layout.dialog_get_name, null);
         editText = view.findViewById(R.id.newCategoryNameField);
-        editText.setHint("Category Name");
+        editText.setHint("Row Name");
         builder.setView(view)
                 // Add action buttons
                 .setPositiveButton("Create", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
-                        listener.onCreateCategoryDialogPositiveClick(CreateCategoryDialog.this, editText.getText().toString());
+                        listener.onCreateRowDialogPositiveClick(CreateRowDialog.this, editText.getText().toString());
                     }
                 })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        CreateCategoryDialog.this.getDialog().cancel();
-                        listener.onCreateCategoryDialogNegativeClick(CreateCategoryDialog.this);
+                        CreateRowDialog.this.getDialog().cancel();
+                        listener.onCreateRowDialogNegativeClick(CreateRowDialog.this);
                     }
                 });
 
