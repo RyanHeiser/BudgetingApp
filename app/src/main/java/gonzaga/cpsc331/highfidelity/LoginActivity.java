@@ -1,5 +1,7 @@
 package gonzaga.cpsc331.highfidelity;
 
+import static androidx.core.content.ContextCompat.startActivity;
+
 import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
@@ -27,6 +29,4 @@ public class LoginActivity extends ComponentActivity {
             }
         });
     }
-
-
 }

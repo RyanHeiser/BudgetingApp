@@ -1,5 +1,6 @@
 package gonzaga.cpsc331.highfidelity;
 
+import android.app.FragmentManager;
 import android.os.Bundle;
 import android.view.animation.Animation;
 
