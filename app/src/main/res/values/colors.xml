@@ -8,4 +8,17 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="green">#FF6DA834</color>
+    <color name="chart_background">#FFFFFFFF</color>
+    <color name="chart_surface">#FFFFFFFF</color>
+    <color name="chart_card_background">#FFFFFFFF</color>
+    <color name="chart_green">#FF6DA834</color>
+    <color name="chart_green_dark">#FF4E7D21</color>
+    <color name="chart_green_light">#FFA9D37B</color>
+    <color name="chart_lavender">#FFD8CBE0</color>
+    <color name="chart_text_muted">#FF4A4A4A</color>
+    <color name="chart_outline">#FFCCCCCC</color>
+    <color name="chart_slice_one">#FFAAAAAA</color>
+    <color name="chart_slice_two">#FFD8D8D8</color>
+    <color name="chart_slice_three">#FFBFC9B3</color>
+    <color name="chart_slice_four">#FFEAEAEA</color>
 </resources>
