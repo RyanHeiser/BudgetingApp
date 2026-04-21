@@ -1,34 +1,25 @@
 package gonzaga.cpsc331.highfidelity.model;
 
+import java.math.BigDecimal;
+
 public class Goal {
-    private double goal;
-
-    private double progress;
-
-    private String name;
-
+    private BudgetRow category;
+    private BigDecimal progress;
     private boolean isAchieved;
-    public Goal(double goal, String name){
-        this.goal = goal;
-        this.name = name;
-        this.progress = 0.0;
+    public Goal(BudgetRow category){
+        this.category = category;
+
         this.isAchieved = false;
     }
 
-    public String getName(){
-        return this.name;
-    }
-    public double getGoal(){
-        return this.goal;
-    }
-    public double getProgress(){
+    public BigDecimal getProgress(){
         return this.progress;
     }
-    public void incrementProgressBar(double increment){
-        this.progress += increment;
+    public <bigDecimal> void incrementProgressBar(BigDecimal increment){
+    this.progress = this.progress.add(increment);
     }
     public boolean isAchieved(){
-        if(progress >= goal){
+        if(progress.compareTo(this.category.getAmount()) >= 0){
             return true;
         }
         else{
