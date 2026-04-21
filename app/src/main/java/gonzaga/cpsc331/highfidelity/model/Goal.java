@@ -5,12 +5,14 @@ public class Goal {
 
     private double amount;
 
-    private String description;
+    private String name;
 
-    private BudgetRow budgetRow;
-
-    public Goal(){
-
+    public Goal(double goal, String name){
+        this.goal = goal;
+        this.name = name;
+        this.amount = 0.0;
     }
+
+
 
 }
