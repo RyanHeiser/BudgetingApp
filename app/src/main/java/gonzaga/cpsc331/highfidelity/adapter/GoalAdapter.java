@@ -1,5 +1,6 @@
 package gonzaga.cpsc331.highfidelity.adapter;
 
+import android.annotation.SuppressLint;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -35,6 +36,7 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.GoalViewHolder
         ProgressBar progressBar;
         TextWatcher amountWatcher;
 
+        @SuppressLint("WrongViewCast")
         public GoalViewHolder(View itemView) {
             super(itemView);
             title = itemView.findViewById(R.id.tvGoalsTitle);

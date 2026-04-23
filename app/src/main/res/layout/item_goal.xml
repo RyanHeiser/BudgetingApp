@@ -10,44 +10,38 @@
     <!-- GOAL NAME + DELETE ROW -->
 
     <!-- PROGRESS BAR -->
-    <LinearLayout
+
+    <TextView
+        android:id="@+id/tvGoalName"
+        android:layout_width="1dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginStart="6dp"
+        android:text="Goal Name"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:maxLines="1"
+        android:ellipsize="end" />
+
+    <TextView
+        android:id="@+id/tvGoalAmount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
+        android:layout_marginTop="4dp"
+        android:paddingHorizontal="2dp"
+        android:text="$0"
+        android:textSize="18sp" />
 
-        <TextView
-            android:id="@+id/tvGoalName"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_weight="1"
-            android:text="Goal Name"
-            android:textColor="@color/black"
-            android:textSize="22sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/tvGoalAmount"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
-            android:paddingHorizontal="10dp"
-            android:text="$0"
-            android:textSize="18sp" />
-
-        <ImageButton
-            android:id="@+id/btnDeleteGoal"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/bg_red_circle"
-            android:contentDescription="Delete goal"
-            android:src="@android:drawable/ic_delete"
-            app:tint="@color/white" />
-
-
-    </LinearLayout>
+    <ImageButton
+        android:id="@+id/btnDeleteGoal"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/bg_red_circle"
+        android:contentDescription="Delete goal"
+        android:src="@android:drawable/ic_delete"
+        app:tint="@color/white" />
 
     <ProgressBar
         android:id="@+id/progressGoal"
@@ -59,12 +53,11 @@
         android:max="100"
         android:progress="30" />
     <TextView
-    android:id="@+id/tvProgressText"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center"
-    android:text="0%"
-    android:textColor="@android:color/black"
-    android:textStyle="bold"/>
-
+        android:id="@+id/tvGoalStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="In Progress"
+        android:textStyle="bold"
+        android:layout_marginTop="6dp"
+        android:layout_marginStart="10dp" />
 </LinearLayout>

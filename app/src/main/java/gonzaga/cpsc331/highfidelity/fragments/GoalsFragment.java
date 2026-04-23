@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import gonzaga.cpsc331.highfidelity.R;
 import gonzaga.cpsc331.highfidelity.adapter.GoalAdapter;
 import gonzaga.cpsc331.highfidelity.dialogs.CreateCategoryDialog;
+import gonzaga.cpsc331.highfidelity.dialogs.CreateGoalDialog;
 import gonzaga.cpsc331.highfidelity.model.BudgetRow;
 import gonzaga.cpsc331.highfidelity.model.Goal;
 
@@ -41,19 +42,19 @@ public class GoalsFragment extends Fragment {
 
         Button addButton = view.findViewById(R.id.btnAddGoal);
         addButton.setOnClickListener(v -> {
-            new CreateCategoryDialog()
+            new CreateGoalDialog()
                     .show(getChildFragmentManager(), "createGoal");
         });
 
         return view;
     }
-    public void onCreateGoalDialogPositiveClick(DialogFragment dialog, int id) {
+    public void onCreateGoalDialogPositiveClick(DialogFragment dialog, int id,String name, BudgetRow row, BigDecimal amount) {
 
         adapter.addGoal(new Goal(name, row, amount));
     }
 
-    @Override
-    public void onCreateGoalDialogNegativeClick(DialogFragment dialog, int id) {
+
+    public void onCreateGoalDialogNegativeClick(DialogFragment dialog, int id, int position) {
         adapter.deleteGoal(position);
     }
 

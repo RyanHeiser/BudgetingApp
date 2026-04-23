@@ -22,6 +22,7 @@ public class BudgetRowAdapter extends RecyclerView.Adapter<BudgetRowAdapter.RowV
 
     private final List<BudgetRow> rows;
 
+
     public BudgetRowAdapter(List<BudgetRow> rows) {
         this.rows = rows;
     }
@@ -66,6 +67,7 @@ public class BudgetRowAdapter extends RecyclerView.Adapter<BudgetRowAdapter.RowV
             BudgetRowAdapter.this.deleteRow(holder.getAbsoluteAdapterPosition());
         });
     }
+
 
     @Override
     public int getItemCount() {
@@ -113,5 +115,7 @@ public class BudgetRowAdapter extends RecyclerView.Adapter<BudgetRowAdapter.RowV
                 row.setAmount(BigDecimal.ZERO);
             }
         }
+
+
     }
 }

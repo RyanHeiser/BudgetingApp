@@ -34,7 +34,7 @@ public class Goal {
     this.Amount = this.Amount.add(increment);
     }
     public boolean isAchieved(){
-        if(Amount.compareTo(this.budgetrow.getAmount(BigDecimal.ZERO)) >= 0){
+        if(Amount.compareTo(this.budgetrow.getAmount()) >= 0){
             return true;
         }
         else{
