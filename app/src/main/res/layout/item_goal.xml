@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
@@ -22,7 +23,7 @@
             android:textSize="22sp"
             android:textColor="@color/black"
             android:textStyle="bold"
-            android:layout_marginLeft="10dp"/>
+            android:layout_marginLeft="10dp" />
 
         <ImageButton
             android:id="@+id/btnDeleteGoal"
@@ -30,9 +31,9 @@
             android:layout_height="36dp"
             android:src="@android:drawable/ic_delete"
             android:background="@drawable/bg_red_circle"
-            android:tint="@color/white"
             android:contentDescription="Delete goal"
-            android:layout_marginRight="10dp"/>
+            android:layout_marginRight="10dp"
+            app:tint="@color/white" />
 
 
     </LinearLayout>
@@ -44,6 +45,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:min="0"
         android:max="100"
         android:progress="30" />
 

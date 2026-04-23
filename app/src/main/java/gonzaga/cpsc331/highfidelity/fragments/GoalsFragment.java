@@ -36,7 +36,7 @@ public class GoalsFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_goals, container, false);
 
-        recyclerView = view.findViewById(R.id.);
+        recyclerView = view.findViewById(R.id.rowsRecyclerView);
 
         adapter = new GoalAdapter(, this);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -51,18 +51,18 @@ public class GoalsFragment extends Fragment {
         return view;
     }
     public void onCreateCategoryDialogPositiveClick(DialogFragment dialog, String name, BudgetRow row, BigDecimal amount) {
-        adapter.addGoal(new Goal(name, row, amount);
+        adapter.addGoal(new Goal(name, row, amount));
     }
 
     @Override
-    public void onCreateCategoryDialogNegativeClick(DialogFragment dialog) {
-        // no-op
+    public void onCreateCategoryDialogNegativeClick(DialogFragment dialog, int position) {
+        adapter.deleteGoal(position);
     }
 
     @Override
     public void onCreateGoalPositiveClick(DialogFragment dialog, String name, BudgetRow row, BigDecimal amount) {
         int position = ((CreateRowDialog)dialog).getCategoryPosition();
-        adapter.addGoal(recyclerView, position, new Goal(name, row, amount));
+        adapter.addGoal(new Goal(name, row, amount));
     }
 
     @Override

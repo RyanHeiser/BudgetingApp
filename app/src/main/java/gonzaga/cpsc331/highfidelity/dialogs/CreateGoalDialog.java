@@ -6,6 +6,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.location.GnssAntennaInfo;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,13 +16,16 @@ import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
-import gonzaga.cpsc331.highfidelity.R;
+import java.math.BigDecimal;
 
-public class CreateGoalDialog {
+import gonzaga.cpsc331.highfidelity.R;
+import gonzaga.cpsc331.highfidelity.model.BudgetRow;
+
+public class CreateGoalDialog extends DialogFragment {
 
     public interface CreateGoalDialogListener {
-        public void onCreateGoalDialogPositiveClick(DialogFragment dialog, String name);
-        public void onCreateGoalDialogNegativeClick(DialogFragment dialog);
+        public void onCreateGoalDialogPositiveClick(DialogFragment dialog, int id);
+        public void onCreateGoalDialogNegativeClick(CreateGoalDialog dialog);
     }
     CreateGoalDialog.CreateGoalDialogListener listener;
     EditText editText;
@@ -40,14 +44,14 @@ public class CreateGoalDialog {
         }
 
         // Verify that the host fragment implements the callback interface.
-        if (parent instanceof CreateRowDialog.CreateRowDialogListener) {
+        if (parent instanceof CreateGoalDialog.CreateGoalDialogListener) {
             listener = (CreateGoalDialog.CreateGoalDialogListener) parent;
         } else {
-            throw new ClassCastException("Parent fragment must implement CreateRowDialogListener");
+            throw new ClassCastException("Parent fragment must implement CreateGoalDialogListener");
         }
     }
 
-    public Dialog onCreateDialog(Bundle savedInstanceState){
+    public Dialog onCreateDialog(Bundle savedInstanceState)  {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         // Get the layout inflater.
         LayoutInflater inflater = requireActivity().getLayoutInflater();
@@ -62,12 +66,12 @@ public class CreateGoalDialog {
                 .setPositiveButton("Create", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
-                        listener.onCreateGoalDialogPositiveClick(CreateGoalDialog.this, editText.getText().toString());
+                        listener.onCreateGoalDialogPositiveClick(CreateGoalDialog.this, id);
                     }
                 })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        CreateGoalDialog.this.getDialog().cancel();
+                        dialog.dismiss();
                         listener.onCreateGoalDialogNegativeClick(CreateGoalDialog.this);
                     }
                 });

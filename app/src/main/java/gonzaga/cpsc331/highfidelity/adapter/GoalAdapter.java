@@ -37,7 +37,7 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.GoalViewHolder
 
         public GoalViewHolder(View itemView) {
             super(itemView);
-            title = itemView.findViewById(R.id.goalTitle);
+            title = itemView.findViewById(R.id.);
             amount = itemView.findViewById(R.id.);
             deleteButton = itemView.findViewById(R.id.btnDeleteGoal);
             progressBar = itemView.findViewById(R.id.progressGoal);
@@ -78,7 +78,8 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.GoalViewHolder
 
         holder.progressBar.setProgress(progress);
         holder.deleteButton.setOnClickListener(v -> {
-            goalAdapter.this.deleteRow(holder.getAbsoluteAdapterPosition());
+
+            GoalAdapter.this.deleteRow(holder.getAbsoluteAdapterPosition());
         });
     }
 
