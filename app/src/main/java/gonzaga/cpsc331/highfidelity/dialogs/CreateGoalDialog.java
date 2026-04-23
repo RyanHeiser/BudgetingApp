@@ -6,7 +6,6 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.location.GnssAntennaInfo;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,13 +23,13 @@ import gonzaga.cpsc331.highfidelity.model.BudgetRow;
 public class CreateGoalDialog extends DialogFragment {
 
     public interface CreateGoalDialogListener {
-        public void onCreateGoalDialogPositiveClick(DialogFragment dialog, int id);
-        public void onCreateGoalDialogNegativeClick(CreateGoalDialog dialog);
+        public void onCreateGoalDialogPositiveClick(DialogFragment dialog, String name, BudgetRow row, BigDecimal amount);
+        public void onCreateGoalDialogNegativeClick(CreateGoalDialog dialog, int position);
     }
     CreateGoalDialog.CreateGoalDialogListener listener;
     EditText editText;
 
-    RecyclerView categoryView;
+    RecyclerView GoalView;
 
     // Override the Fragment.onAttach() method to instantiate the
     // NoticeDialogListener.
@@ -52,27 +51,50 @@ public class CreateGoalDialog extends DialogFragment {
     }
 
     public Dialog onCreateDialog(Bundle savedInstanceState)  {
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        AlertDialog.Builder builder = new AlertDialog.Builder(requireActivity());
         // Get the layout inflater.
         LayoutInflater inflater = requireActivity().getLayoutInflater();
 
         // Inflate and set the layout for the dialog.
         // Pass null as the parent view because it's going in the dialog layout.
         View view = inflater.inflate(R.layout.dialog_get_name, null);
-        editText = view.findViewById(R.id.newCategoryNameField);
-        editText.setHint("Amount");
+
+        EditText nameInput = view.findViewById(R.id.goalName);
+        EditText amountInput = view.findViewById(R.id.goalAmount);
+
         builder.setView(view)
                 // Add action buttons
                 .setPositiveButton("Create", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
-                        listener.onCreateGoalDialogPositiveClick(CreateGoalDialog.this, id);
+                        String name = nameInput.getText().toString().trim();
+                        String amountText = amountInput.getText().toString().trim();
+
+                        if (name.isEmpty() || amountText.isEmpty()) {
+                            return; // basic validation
+                        }
+
+                        BigDecimal amount;
+                        try {
+                            amount = new BigDecimal(amountText);
+                        } catch (Exception e) {
+                            amount = BigDecimal.ZERO;
+                        }
+
+                        BudgetRow row = null; // replace if you have selection logic
+
+                        listener.onCreateGoalDialogPositiveClick(
+                                CreateGoalDialog.this,
+                                name,
+                                row,
+                                amount
+                        );
                     }
                 })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.dismiss();
-                        listener.onCreateGoalDialogNegativeClick(CreateGoalDialog.this);
+                        listener.onCreateGoalDialogNegativeClick(CreateGoalDialog.this, id);
                     }
                 });
 

@@ -37,8 +37,8 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.GoalViewHolder
 
         public GoalViewHolder(View itemView) {
             super(itemView);
-            title = itemView.findViewById(R.id.);
-            amount = itemView.findViewById(R.id.);
+            title = itemView.findViewById(R.id.tvGoalsTitle);
+            amount = itemView.findViewById(R.id.tvGoalAmount);
             deleteButton = itemView.findViewById(R.id.btnDeleteGoal);
             progressBar = itemView.findViewById(R.id.progressGoal);
         }
@@ -53,7 +53,7 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.GoalViewHolder
     }
 
     @Override
-    public void onBindViewHolder(@NonNull BudgetRowAdapter.RowViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull GoalAdapter.GoalViewHolder holder, int position) {
         Goal goal = goals.get(position);
 
         holder.title.setText(goal.getName());
@@ -69,7 +69,7 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.GoalViewHolder
         BigDecimal target = goal.getAmount();
 
         // Calculate percentage
-        int progress = current.divide(target, 2, RoundingMode.HALF_UP).multiply(new BigDecimal(100));
+        int progress = current.divide(target, 2, RoundingMode.HALF_UP).multiply(new BigDecimal("100")).intValue();
 
         // Prevent crash if target is 0
         if (target.compareTo(BigDecimal.ZERO) == 0){
@@ -79,7 +79,7 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.GoalViewHolder
         holder.progressBar.setProgress(progress);
         holder.deleteButton.setOnClickListener(v -> {
 
-            GoalAdapter.this.deleteRow(holder.getAbsoluteAdapterPosition());
+            GoalAdapter.this.deleteGoal(holder.getAbsoluteAdapterPosition());
         });
     }
 

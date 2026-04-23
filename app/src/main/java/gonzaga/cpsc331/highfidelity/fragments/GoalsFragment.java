@@ -17,12 +17,8 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 
 import gonzaga.cpsc331.highfidelity.R;
-import gonzaga.cpsc331.highfidelity.adapter.BudgetCategoryAdapter;
 import gonzaga.cpsc331.highfidelity.adapter.GoalAdapter;
-import gonzaga.cpsc331.highfidelity.data.BudgetRepository;
 import gonzaga.cpsc331.highfidelity.dialogs.CreateCategoryDialog;
-import gonzaga.cpsc331.highfidelity.dialogs.CreateRowDialog;
-import gonzaga.cpsc331.highfidelity.model.BudgetCategory;
 import gonzaga.cpsc331.highfidelity.model.BudgetRow;
 import gonzaga.cpsc331.highfidelity.model.Goal;
 
@@ -36,37 +32,30 @@ public class GoalsFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_goals, container, false);
 
-        recyclerView = view.findViewById(R.id.rowsRecyclerView);
+        recyclerView = view.findViewById(R.id.goalsRecyclerView);
 
-        adapter = new GoalAdapter(, this);
+        ArrayList<Goal> goals = new ArrayList<Goal>();
+        adapter = new GoalAdapter(goals);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
 
         Button addButton = view.findViewById(R.id.btnAddGoal);
         addButton.setOnClickListener(v -> {
             new CreateCategoryDialog()
-                    .show(getChildFragmentManager(), "createCategory");
+                    .show(getChildFragmentManager(), "createGoal");
         });
 
         return view;
     }
-    public void onCreateCategoryDialogPositiveClick(DialogFragment dialog, String name, BudgetRow row, BigDecimal amount) {
+    public void onCreateGoalDialogPositiveClick(DialogFragment dialog, int id) {
+
         adapter.addGoal(new Goal(name, row, amount));
     }
 
     @Override
-    public void onCreateCategoryDialogNegativeClick(DialogFragment dialog, int position) {
+    public void onCreateGoalDialogNegativeClick(DialogFragment dialog, int id) {
         adapter.deleteGoal(position);
     }
 
-    @Override
-    public void onCreateGoalPositiveClick(DialogFragment dialog, String name, BudgetRow row, BigDecimal amount) {
-        int position = ((CreateRowDialog)dialog).getCategoryPosition();
-        adapter.addGoal(new Goal(name, row, amount));
-    }
 
-    @Override
-    public void onCreateGoalDialogNegativeClick(DialogFragment dialog) {
-        // no-op
-    }
 }
