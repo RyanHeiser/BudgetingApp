@@ -37,6 +37,8 @@ public class ChartFragment extends Fragment {
     private LinearLayout expenseContainer;
     private View rootView;
 
+    private BigDecimal income;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -84,6 +86,7 @@ public class ChartFragment extends Fragment {
             }
         }
 
+        this.income = income;
         BigDecimal remaining = income.subtract(totalExpenses);
 
         incomeAmountView.setText(currencyFormat.format(income));
@@ -166,7 +169,7 @@ public class ChartFragment extends Fragment {
         TextView amount = new TextView(requireContext());
         String percent = totalExpenses.signum() == 0
                 ? "0%"
-                : Math.round(summary.amount.floatValue() / totalExpenses.floatValue() * 100f) + "%";
+                : Math.round(summary.amount.floatValue() / income.floatValue() * 100f) + "%";
         amount.setText(currencyFormat.format(summary.amount) + "  " + percent);
         amount.setTextColor(requireContext().getColor(R.color.black));
         amount.setTextSize(18f);
