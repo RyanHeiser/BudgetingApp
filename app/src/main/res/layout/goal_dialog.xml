@@ -8,19 +8,23 @@
         android:id="@+id/goalName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Goal Name"/>
+        android:hint="Goal Name"
+        android:textSize="24sp"
+        android:cursorVisible="true"
+        android:focusableInTouchMode="true"
+        android:textCursorDrawable="@color/black" />
 
     <EditText
         android:id="@+id/goalAmount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:hint="Amount"
-        android:inputType="numberDecimal"/>
+        android:inputType="numberDecimal"
+        android:textSize="24sp"
+        android:cursorVisible="true"
+        android:focusableInTouchMode="true"
+        android:textCursorDrawable="@color/black" />
     <!-- Simple scrollable list -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvRows"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_marginTop="8dp"/>
 
 </LinearLayout>

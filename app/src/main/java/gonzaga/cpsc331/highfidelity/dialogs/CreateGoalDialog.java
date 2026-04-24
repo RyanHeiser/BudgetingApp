@@ -7,15 +7,13 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.math.BigDecimal;
@@ -31,7 +29,7 @@ import gonzaga.cpsc331.highfidelity.model.BudgetRow;
 public class CreateGoalDialog extends DialogFragment {
 
     public interface CreateGoalDialogListener {
-        public void onCreateGoalDialogPositiveClick(DialogFragment dialog, String name, BudgetRow row, BigDecimal amount);
+        public void onCreateGoalDialogPositiveClick(DialogFragment dialog, String name, BigDecimal amount);
         public void onCreateGoalDialogNegativeClick(CreateGoalDialog dialog, int position);
     }
     CreateGoalDialog.CreateGoalDialogListener listener;
@@ -60,6 +58,7 @@ public class CreateGoalDialog extends DialogFragment {
         }
     }
 
+    @NonNull
     public Dialog onCreateDialog(Bundle savedInstanceState)  {
         AlertDialog.Builder builder = new AlertDialog.Builder(requireActivity());
         // Get the layout inflater.
@@ -72,8 +71,6 @@ public class CreateGoalDialog extends DialogFragment {
         EditText nameInput = view.findViewById(R.id.goalName);
         EditText amountInput = view.findViewById(R.id.goalAmount);
 
-        RecyclerView rvRows = view.findViewById(R.id.rvRows);
-        rvRows.setLayoutManager(new LinearLayoutManager(getContext()));
 
 
         List<BudgetRow> Rows = new ArrayList<>();
@@ -81,9 +78,6 @@ public class CreateGoalDialog extends DialogFragment {
             Rows.addAll(category.getRows());
         }
         BudgetRowAdapter rowAdapter = new BudgetRowAdapter(Rows, row -> { selectedRow = row; } );
-        rvRows.setAdapter(rowAdapter);
-
-
 
         builder.setView(view)
                 // Add action buttons
@@ -104,13 +98,9 @@ public class CreateGoalDialog extends DialogFragment {
                             amount = BigDecimal.ZERO;
                         }
 
-
-
-
                         listener.onCreateGoalDialogPositiveClick(
                                 CreateGoalDialog.this,
                                 name,
-                                selectedRow,
                                 amount
                         );
                     }

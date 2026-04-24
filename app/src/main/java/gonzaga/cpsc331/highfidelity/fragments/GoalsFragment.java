@@ -23,7 +23,7 @@ import gonzaga.cpsc331.highfidelity.dialogs.CreateGoalDialog;
 import gonzaga.cpsc331.highfidelity.model.BudgetRow;
 import gonzaga.cpsc331.highfidelity.model.Goal;
 
-public class GoalsFragment extends Fragment {
+public class GoalsFragment extends Fragment implements CreateGoalDialog.CreateGoalDialogListener {
     private RecyclerView recyclerView;
     private GoalAdapter adapter;
 
@@ -61,4 +61,13 @@ public class GoalsFragment extends Fragment {
     }
 
 
+    @Override
+    public void onCreateGoalDialogPositiveClick(DialogFragment dialog, String name, BigDecimal amount) {
+        adapter.addGoal(new Goal(name, amount, BigDecimal.ZERO));
+    }
+
+    @Override
+    public void onCreateGoalDialogNegativeClick(CreateGoalDialog dialog, int position) {
+        // do nothing
+    }
 }
