@@ -40,5 +40,10 @@ public final class BudgetRepository {
                 new BudgetRow("Rent", new BigDecimal("875.00")),
                 new BudgetRow("Utilities", new BigDecimal("80.00"))
         ))));
+
+        categories.add(new BudgetCategory("Entertainment", new ArrayList<>(List.of(
+                new BudgetRow("Hulu", new BigDecimal("15.00")),
+                new BudgetRow("Spotify", new BigDecimal("10.00"))
+        ))));
     }
 }
