@@ -30,7 +30,7 @@ public class BudgetRowAdapter extends RecyclerView.Adapter<BudgetRowAdapter.RowV
     public BudgetRowAdapter(List<BudgetRow> rows) {
         this.rows = rows;
     }
-//needed for click handeling
+
     public BudgetRowAdapter(List<BudgetRow> rows, OnRowClickListener listener) {
         this.rows = rows;
         this.listener = listener;

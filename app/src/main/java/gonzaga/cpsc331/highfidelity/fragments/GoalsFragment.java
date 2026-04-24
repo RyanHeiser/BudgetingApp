@@ -46,16 +46,18 @@ public class GoalsFragment extends Fragment {
                     .show(getChildFragmentManager(), "createGoal");
         });
 
+        adapter.addGoal(new Goal("Laptop", new BigDecimal(1200), new BigDecimal(450)));
+
         return view;
     }
     public void onCreateGoalDialogPositiveClick(DialogFragment dialog, int id,String name, BudgetRow row, BigDecimal amount) {
 
-        adapter.addGoal(new Goal(name, row, amount));
+        //adapter.addGoal(new Goal(name, 0));
     }
 
 
     public void onCreateGoalDialogNegativeClick(DialogFragment dialog, int id, int position) {
-        adapter.deleteGoal(position);
+        //adapter.deleteGoal(position);
     }
 
 

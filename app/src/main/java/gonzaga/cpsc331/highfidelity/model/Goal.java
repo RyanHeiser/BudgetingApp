@@ -4,43 +4,35 @@ import java.math.BigDecimal;
 
 public class Goal {
 
-    private String Name;
-    private BudgetRow budgetrow;
-
-    private BigDecimal Amount;
-    private boolean isAchieved;
-    public Goal(String name, BudgetRow category, BigDecimal amount){
-        this.Name = name;
-        this.budgetrow = category;
-        this.Amount = amount;
-        this.isAchieved = false;
+    private String name;
+    private BigDecimal goalAmount;
+    private BigDecimal currentAmount;
+    public Goal(String name, BigDecimal goalAmount, BigDecimal currentAmount){
+        this.name = name;
+        this.goalAmount = goalAmount;
+        this.currentAmount = currentAmount;
     }
 
     public String getName(){
-        return this.Name;
+        return this.name;
     }
-    public BigDecimal getAmount(){
-        return this.Amount;
-    }
-
-    public void setAmount( BigDecimal amount){
-        this.Amount = amount;
+    public BigDecimal getGoalAmount(){
+        return this.goalAmount;
     }
 
-    public BudgetRow getBudgetRow(){
-        return this.budgetrow;
-    }
-    public <bigDecimal> void incrementProgressBar(BigDecimal increment){
-    this.Amount = this.Amount.add(increment);
-    }
-    public boolean isAchieved(){
-        if(Amount.compareTo(this.budgetrow.getAmount()) >= 0){
-            return true;
-        }
-        else{
-            return false;
-        }
+    public void setGoalAmount(BigDecimal goalAmount){
+        this.goalAmount = goalAmount;
     }
 
+    public BigDecimal getCurrentAmount() {
+        return currentAmount;
+    }
 
+    public void setCurrentAmount(BigDecimal currentAmount) {
+        this.currentAmount = currentAmount;
+    }
+
+    public void addAmount(BigDecimal amount) {
+        currentAmount = currentAmount.add(amount);
+    }
 }
