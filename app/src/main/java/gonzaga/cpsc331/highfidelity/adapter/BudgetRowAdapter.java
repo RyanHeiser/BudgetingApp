@@ -21,9 +21,19 @@ import gonzaga.cpsc331.highfidelity.model.BudgetRow;
 public class BudgetRowAdapter extends RecyclerView.Adapter<BudgetRowAdapter.RowViewHolder> {
 
     private final List<BudgetRow> rows;
+    private OnRowClickListener listener;
+
+    public interface OnRowClickListener {
+        void onRowClick(BudgetRow row);
+    }
 
     public BudgetRowAdapter(List<BudgetRow> rows) {
         this.rows = rows;
+    }
+
+    public BudgetRowAdapter(List<BudgetRow> rows, OnRowClickListener listener) {
+        this.rows = rows;
+        this.listener = listener;
     }
 
     public static class RowViewHolder extends RecyclerView.ViewHolder {
@@ -66,6 +76,7 @@ public class BudgetRowAdapter extends RecyclerView.Adapter<BudgetRowAdapter.RowV
             BudgetRowAdapter.this.deleteRow(holder.getAbsoluteAdapterPosition());
         });
     }
+
 
     @Override
     public int getItemCount() {
@@ -113,5 +124,7 @@ public class BudgetRowAdapter extends RecyclerView.Adapter<BudgetRowAdapter.RowV
                 row.setAmount(BigDecimal.ZERO);
             }
         }
+
+
     }
 }
